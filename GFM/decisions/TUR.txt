@@ -1051,6 +1051,10 @@ political_decisions = {
         ai_will_do = { factor = 0 modifier = { factor = 100 civilized = yes } } #this doesn't work, you 0*100=0
     }
 
+    #####################################################
+    #End of Kurdish Decisions#
+    #####################################################
+
 	integrate_annazah = {
         picture = map_arabia
         potential = {
@@ -1157,8 +1161,6 @@ political_decisions = {
             is_greater_power = yes
         }
         allow = {
-            owns = 670
-            owns = 664
             all_core = { owned_by = THIS }
             OR = {
                 government = absolute_monarchy
@@ -1254,9 +1256,6 @@ political_decisions = {
             NOT = { has_global_flag = oriental_crisis_sick_man }
         }
         allow = {
-            owns = 670
-            owns = 664
-			owns = 834
             all_core = { owned_by = THIS }
             OR = {
                 government = absolute_monarchy
@@ -1404,9 +1403,6 @@ political_decisions = {
             is_greater_power = yes
         }
         allow = {
-            owns = 670
-            owns = 664
-			owns = 834
             all_core = { owned_by = THIS }
             OR = {
                 government = absolute_monarchy
@@ -1499,10 +1495,6 @@ political_decisions = {
 			is_greater_power = yes
             nationalism_n_imperialism = 1
             war = no
-            owns = 670
-            owns = 664
-			owns = 834
-			owns = 1745
             NOT = { alliance_with = PER relation = { who = PER value = 20 } }
             NOT = { has_country_modifier = recently_lost_war }
             TUR = {
