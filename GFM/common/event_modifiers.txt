@@ -750,6 +750,10 @@ highlander_raids = {
     pop_consciousness_modifier = 0.2
     pop_militancy_modifier = 0.25
     icon = 18
+	supply_limit = -20
+	attrition = 10
+	max_attrition = 100
+	reinforce_speed = -1
 }
 
 jewish_farms = {
