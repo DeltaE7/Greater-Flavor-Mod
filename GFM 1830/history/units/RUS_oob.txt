@@ -127,8 +127,13 @@ AFG = {
 
 CIR = {
     value = -200
-    level = 1
-    influence_value = 1
+    level = 5
+    influence_value = 0
+}
+DAG = {
+    value = -200
+    level = 5
+    influence_value = 0
 }
 KAZ = {
     value = -100
