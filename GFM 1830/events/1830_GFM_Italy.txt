@@ -33,14 +33,14 @@ country_event = {
     option = {
         name = "Feign support for the revolutionaries - they will be a thorn in Austria's side."
 		AUS = { country_event = 16051903 }
-		ai_chance = { factor = 1 }
+		ai_chance = { factor = 0.8 }
     }
 
     option = {
         name = "We shall guarantee that Austria will not intervene in Italian affairs!"
 		set_global_flag = french_support_italy
 		AUS = { country_event = 16051903 }
-		ai_chance = { factor = 0 }
+		ai_chance = { factor = 0.2 }
     }
 }
 
@@ -278,7 +278,7 @@ country_event = {
 # Italian United Provinces - fires for the Italian countries
 country_event = {
 	id = 26051906
-	title = "The Italian United Provinces"
+	title = "Penis Italian United Provinces"
 	desc = "FPROVINCEUNITEITALIANEOK"
 	picture = "province_unite_italiane_1"
 
@@ -566,6 +566,8 @@ country_event = {
 			tag = TUS
 			tag = PAP
 			tag = AUS
+			tag = SIC
+			tag = RUS
 		}
 		has_global_flag = 1831_italy
     }
@@ -650,8 +652,283 @@ country_event = {
 			# Audax Validator "." Ignore_NEXT
 			secede_province = LUC
 		}
+		# Audax Validator "." Ignore_NEXT
+		any_land_province = {
+			limit = {
+				owned_by = ITA
+				# Audax Validator "." Ignore_NEXT
+				is_core = SIC
+			}
+			# Audax Validator "." Ignore_NEXT
+			secede_province = THIS
+			# Audax Validator "." Ignore_NEXT
+			secede_province = SIC
+		}
     }
 }
+
+#country_event = {
+#	id = 800000001
+#    title = "The Carbonari Uprising spreads"
+#    desc = "The Italian rebels have spilled out of the Central Italy and taken control of our country, recruiting locals to join them."
+#    trigger = {
+#		tag = ITA
+#		has_global_flag = 1831_italy
+#		NOT { year = 1835 }
+#		OR = {                        
+#			MOD = { capital_scope = { controlled_by = ITA } }
+#			TUS = { capital_scope = { controlled_by = ITA } }
+#			PAP = { capital_scope = { controlled_by = ITA } }
+#			LUC = { capital_scope = { controlled_by = ITA } }
+#		}
+#    }
+#
+#    mean_time_to_happen = { days = 1 }
+#
+#	option = {
+#		name = "Take controll of them!"
+#		random_country = {
+#			limit = { 
+#				is_culture_group = italian
+#				capital_scope = { conntrolled_by = ITA }
+#			}
+#			country_event = 800000002
+#		}
+#    }
+#}
+#
+country_event = {
+	id = 800000002
+    title = "The Carbonari Uprising spreads"
+    desc = "The Italian rebels have spilled out of the Central Italy and taken control of our country, recruiting locals to join them."
+	picture = "province_unite_italiane_1"
+    is_triggered_only = yes
+
+	option = {
+		name = "Oh no!"
+		random_owned = {
+			limit = {
+				owner = {
+					tag = PAP
+				}	
+			}
+			owner = {
+				capital_scope = {
+					sub_unit = { type = infantry value = current }
+					sub_unit = { type = infantry value = current }
+				}
+				ITA = { country_event = 800000003 capital = 749 leadership = 20}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					tag = TUS
+				}	
+			}
+			owner = {
+				capital_scope = {
+					sub_unit = { type = infantry value = current }
+					sub_unit = { type = artillery value = current }
+				}
+			}
+		}
+		random_owned = {
+			limit = {
+				owner = {
+					tag = SIC
+				}	
+			}
+			owner = {
+				capital_scope = {
+					sub_unit = { type = infantry value = current }
+					sub_unit = { type = artillery value = current }
+					sub_unit = { type = infantry value = current }
+					sub_unit = { type = artillery value = current }
+					sub_unit = { type = infantry value = current }
+					sub_unit = { type = artillery value = current }
+				ITA = { leadership = 20}
+				}
+			}
+		}
+		capital_scope = {
+            sub_unit = { type = infantry value = current }
+            sub_unit = { type = cavalry value = current }
+            sub_unit = { type = artillery value = current }
+        }
+		any_owned = { 
+			limit = { 
+				NOT = { province_id = 754 }
+			}
+			secede_province = THIS 
+			secede_province = ITA 
+		}
+		ITA = { inherit = THIS }
+		
+    }
+}
+
+country_event = {
+	id = 800000003
+    title = "Spreading the flame of the Revolution"
+    desc = "The Italian rebels have captures Rome and enjoy popular support even in the face of the Austrian Army. Shall we set flames to Particularism in Naples as well?"
+	picture = "province_unite_italiane_1"
+    is_triggered_only = yes
+
+	option = {
+		name = "Invade The Duo-Sicilian Kingdom"
+		war = {
+			target = SIC
+			attacker_goal = { casus_belli = annex_core_country }
+			defender_goal = { casus_belli = make_puppet_no_add_wargoal }
+		}
+    }
+	option = {
+		name = "We should focus on our existing fronts."
+    }
+}
+
+country_event = { #Russian intervention in the Italian Peninsula
+	id = 800000004
+    title = "The Italian Chaos"
+    desc = "The Italian rebels have upset the balance of power far beyon what is acceptable. Now that we have resolved our domestic issues, we can decide what to do"
+	picture = "province_unite_italiane_1"
+    trigger = {
+        war = no
+        CPL = { exists = no }
+        owns = 706
+        has_global_flag = november_uprising_happened
+        has_country_flag = through_november_uprising
+		has_global_flag = 1831_italy
+		NOT { year = 1835 }
+		AUS = { war_with = ITA }
+		ITA = { is_vassal = no }
+    }
+	
+	fire_only_once = yes
+	mean_time_to_happen = { days = 5 }
+
+	option = {
+		name = "Intervene in Italy"
+			war = {
+				target = ITA
+				attacker_goal = { casus_belli = make_puppet_no_add_wargoal }
+				defender_goal = { casus_belli = humiliate_no_infamy }
+			}
+			military_access = AUS
+			ai_chance = { factor = 0.8 }
+    }
+	option = {
+		name = "We will not intervene."
+		ai_chance = { factor = 0.2 }
+    }
+}
+
+#country_event = {
+#    id = 82465
+#    title = "The United Provinces succeed"
+#    desc = "CENTRALITALYORDER"
+#    picture = "ita_1831_crushed"
+#
+#    fire_only_once = yes
+#
+#    trigger = {
+#		ITA = { 
+#			is_vassal = no 
+#			war = no
+#			has_recently_lost_war = no
+#		}
+#		#OR = {
+#		#	tag = MOD
+#		#	tag = TUS
+#		#	tag = PAP
+#		#	tag = AUS
+#		#}
+#		has_global_flag = 1831_italy
+#    }
+#
+#    mean_time_to_happen = {
+#        days = 1
+#    }
+#
+#    option = {
+#        name = "Huzzah!"
+#		ITA = {
+#			government = hms_government
+#			ruling_party_ideology = conservative
+#			political_reform = wealth_voting
+#			political_reform = non_secret_ballots
+#			political_reform = censored_press
+#			political_reform = two_year_draft
+#			political_reform = peonage
+#			political_reform = non_socialist
+#			political_reform = appointed
+#			political_reform = first_past_the_post
+#		}
+#		# Audax Validator "." Ignore_NEXT
+#		any_land_province = {
+#			limit = {
+#				owned_by = ITA
+#				# Audax Validator "." Ignore_NEXT
+#				is_core = MOD
+#			}
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = THIS
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = MOD
+#		}
+#		MOD = { capital = 739 }
+#		# Audax Validator "." Ignore_NEXT
+#		any_land_province = {
+#			limit = {
+#				owned_by = ITA
+#				# Audax Validator "." Ignore_NEXT
+#				is_core = PAR
+#			}
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = THIS
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = PAR
+#		}
+#		AUS = { diplomatic_influence = { who = PAR value = 400 } }
+#		# Audax Validator "." Ignore_NEXT
+#		any_land_province = {
+#			limit = {
+#				owned_by = ITA
+#			    # Audax Validator "." Ignore_NEXT
+#				is_core = PAP
+#			}
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = THIS
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = PAP
+#		}
+#		# Audax Validator "." Ignore_NEXT
+#		any_land_province = {
+#			limit = {
+#				owned_by = ITA
+#				# Audax Validator "." Ignore_NEXT
+#				is_core = TUS
+#			}
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = THIS
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = TUS
+#		}
+#		# Audax Validator "." Ignore_NEXT
+#		any_land_province = {
+#			limit = {
+#				owned_by = ITA
+#				# Audax Validator "." Ignore_NEXT
+#				is_core = LUC
+#			}
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = THIS
+#			# Audax Validator "." Ignore_NEXT
+#			secede_province = LUC
+#		}
+#    }
+#}
 
 country_event = {
 

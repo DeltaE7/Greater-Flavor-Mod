@@ -1,0 +1,37 @@
+political_decisions = {
+    carbonari_revolution_spread = {
+        picture = form_italy
+        potential = {
+            tag = ITA
+			has_global_flag = 1831_italy
+			NOT { year = 1835 }
+			is_vassal = no
+			war = no
+        }
+
+        allow = {
+            OR = {                        
+				MOD = { exists = yes capital_scope = { controlled_by = ITA } }
+				TUS = { exists = yes capital_scope = { controlled_by = ITA } }
+				PAP = { exists = yes capital_scope = { controlled_by = ITA } }
+				LUC = { exists = yes capital_scope = { controlled_by = ITA } } #check if it exists
+				SIC = { exists = yes capital_scope = { controlled_by = ITA } }
+			}
+        }
+
+        effect = {
+            random_country = {
+				limit = { 
+					is_culture_group = italian
+					NOT = { tag = ITA }
+					capital_scope = { controlled_by = ITA }
+				}
+				country_event = 800000002
+			}
+        }
+
+        ai_will_do = {
+            factor = 1
+        }
+    }
+}
