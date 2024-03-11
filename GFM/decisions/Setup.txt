@@ -1339,6 +1339,28 @@ political_decisions = {
 					}
 					add_province_modifier = { name = russoification duration = 25550 }
 				}
+				any_owned = {
+					limit = {
+						OR = {
+							province_id = 1048
+							province_id = 1049
+							province_id = 1050
+							province_id = 1057
+							province_id = 3390
+							province_id = 3388
+							province_id = 1054
+							province_id = 3391
+							province_id = 1052
+							province_id = 1103
+						}
+					}
+					random_list = {
+						25 = { add_province_modifier = { name = highlander_raids duration = 9490 } }
+						25 = { add_province_modifier = { name = highlander_raids duration = 8760 } }
+						25 = { add_province_modifier = { name = highlander_raids duration = 8030 } }
+						25 = { add_province_modifier = { name = highlander_raids duration = 7300 } }
+					}
+				}
 				badboy = 8.03
 				small_arms = 2000
 				ammunition = 2000
