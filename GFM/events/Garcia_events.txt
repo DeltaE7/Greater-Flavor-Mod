@@ -1158,6 +1158,17 @@ country_event = {
 		random_owned = {
 			limit = {
 				owner = {
+					tag = RUS
+				}
+			}
+			owner = {
+				country_event = 60168156
+			}
+		}
+
+		random_owned = {
+			limit = {
+				owner = {
 					tag = BRZ
 				}
 			}
