@@ -175,6 +175,16 @@ RGA = {
     level = 3
     influence_value = 0
 }
+CIR = {
+    value = 50
+    level = 4
+    influence_value = 0
+}
+DAG = {
+    value = 35
+    level = 4
+    influence_value = 0
+}
 
 #Other GP's
 USA = { value = 0 }

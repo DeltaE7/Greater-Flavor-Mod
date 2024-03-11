@@ -250,6 +250,11 @@ ION = {
     level = 5
     influence_value = 0
 }
+CIR = {
+    value = 50
+    level = 4
+    influence_value = 0
+}
 
 #South America
 VNZ = {
