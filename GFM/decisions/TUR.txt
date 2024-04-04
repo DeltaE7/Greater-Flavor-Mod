@@ -1536,6 +1536,56 @@ political_decisions = {
         }
     }
 
+	claim_west_caucasus_tur = {
+        picture = form_transcaucasia
+        potential = {
+            tag = TUR
+            NOT = {
+                has_country_flag = claim_west_caucasus_tur
+                has_global_flag = oriental_crisis_sick_man
+            }
+            is_greater_power = yes
+        }
+
+        allow = {
+            prestige = 100
+            war = no
+            TUR = {
+                all_core = {
+                    owned_by = THIS
+                }
+            }
+            NOT = { has_country_modifier = recently_lost_war }
+        }
+
+        effect = {
+            prestige = 20
+            badboy = 3
+            set_country_flag = claim_caucasus_tur
+			any_country = {
+				limit = {
+					any_owned_province = {
+						OR = {
+							province_id = 1093
+							region = RUS_1092
+						}
+					}
+				}
+				relation = { who = THIS value = -400 }
+			}
+			1093 = { add_core = THIS }
+			RUS_1092 = { add_core = THIS }
+        }
+
+        ai_will_do = {
+            factor = 1
+            modifier = {
+                factor = 0
+                badboy = 0.6
+            }
+        }
+    }
+
     claim_caucasus_tur = {
         picture = form_transcaucasia
         potential = {

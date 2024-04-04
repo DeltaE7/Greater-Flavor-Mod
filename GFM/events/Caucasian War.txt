@@ -1,6 +1,213 @@
 ##Merged
 ###############Caucasian War Events
 #
+
+#any_country = {
+#            limit = {
+#                is_greater_power = yes
+#                capital_scope = { continent = europe }
+#            }
+#            country_event = { id = 325110 days = 5 }
+#        }
+#
+##Polish Uprising - Foreign Intervention
+#country_event = {
+#    id = 325110
+#    title = "EVTNAME500002"
+#    desc = "EVTDESC500002"
+#    picture = "caucasian_war"
+#
+#    is_triggered_only = yes
+#
+#    option = {
+#        name = "EVTOPT500002A"        #Help the poles
+#        set_country_flag = caucasian_war_voted
+#        random_owned = {
+#            limit = { owner = { NOT = { check_variable = { which = owed_cash_money value = 1 } } } }
+#            owner = { set_variable = { which = owed_cash_money value = 20 } }
+#        }
+#        random_owned = {
+#            limit = { owner = { check_variable = { which = owed_cash_money value = 9 } } }
+#            owner = { change_variable = { which = owed_cash_money value = 20 } }
+#        }
+#        random_owned = {
+#            limit = { owner = { NOT = { check_variable = { which = owed_artillery value = 1 } } } }
+#            owner = { set_variable = { which = owed_artillery value = 10 } }
+#        }
+#        random_owned = {
+#            limit = { owner = { check_variable = { which = owed_artillery value = 1 } } }
+#            owner = { change_variable = { which = owed_artillery value = 10 } }
+#        }
+#        random_owned = {
+#            limit = { owner = { NOT = { check_variable = { which = owed_canned_food value = 1 } } } }
+#            owner = { set_variable = { which = owed_canned_food value = 10 } }
+#        }
+#        random_owned = {
+#            limit = { owner = { check_variable = { which = owed_canned_food value = 1 } } }
+#            owner = { change_variable = { which = owed_canned_food value = 10 } }
+#        }
+#        random_owned = {
+#            limit = { owner = { NOT = { check_variable = { which = owed_small_arms value = 1 } } } }
+#            owner = { set_variable = { which = owed_small_arms value = 10 } }
+#        }
+#        random_owned = {
+#            limit = { owner = { check_variable = { which = owed_small_arms value = 1 } } }
+#            owner = { change_variable = { which = owed_small_arms value = 10 } }
+#        }
+#        random_owned = {
+#            limit = { owner = { NOT = { check_variable = { which = owed_ammunition value = 1 } } } }
+#            owner = { set_variable = { which = owed_ammunition value = 10 } }
+#        }
+#        random_owned = {
+#            limit = { owner = { check_variable = { which = owed_ammunition value = 1 } } }
+#            owner = { change_variable = { which = owed_ammunition value = 10 } }
+#        }
+#        CIR = {
+#            treasury = 20000
+#            small_arms = 10
+#            ammunition = 10
+#            canned_food = 10
+#            artillery = 10
+#        }
+#        DAG = {
+#            treasury = 20000
+#            small_arms = 10
+#            ammunition = 10
+#            canned_food = 10
+#            artillery = 10
+#        }
+#        create_alliance = CIR
+#        create_alliance = DAG
+#        leave_alliance = FROM
+#        relation = { who = FROM value = -150 }
+#        relation = { who = CIR value = 200 }
+#        diplomatic_influence = { who = CIR value = 100 }
+#        relation = { who = DAG value = 200 }
+#        diplomatic_influence = { who = DAG value = 100 }
+#        any_pop = {
+#            limit = { has_pop_culture = circassian }
+#            consciousness = 4
+#            militancy = -6
+#        }
+#		random_owned = {
+#			limit = {
+#				owner = {
+#					is_our_vassal = EGY
+#				}	
+#			}
+#			EGY = {
+#				any_pop = {
+#					limit = { has_pop_culture = circassian }
+#					consciousness = 4
+#					militancy = -6
+#				}
+#			}
+#		}
+#        ai_chance = {
+#            factor = 25
+#            modifier = { factor = 0 alliance_with = FROM }
+#            modifier = { factor = 10 war_with = FROM }
+#            modifier = { factor = 2 truce_with = FROM }
+#            modifier = {
+#                factor = 2
+#                NOT = { relation = { who = FROM value = -150 } }
+#            }
+#            modifier = {
+#                factor = 1.5
+#                NOT = { relation = { who = FROM value = -100 } }
+#            }
+#            modifier = {
+#                factor = 1.25
+#                NOT = { relation = { who = FROM value = -50 } }
+#            }
+#        }
+#    }
+#
+#    option = {
+#        name = "EVTOPT500002B"	#condemn Russia
+#        set_country_flag = caucasian_war_voted
+#        relation = { who = FROM value = -50 }
+#        relation = { who = CPL value = 50 }
+#        relation = { who = LIT value = 50 }
+#        any_pop = {
+#            limit = { has_pop_culture = polish }
+#            consciousness = 7
+#            militancy = -1
+#        }
+#        ai_chance = {
+#            factor = 25
+#            modifier = { factor = 0 alliance_with = FROM }
+#            modifier = {
+#                factor = 1.25
+#                relation = { who = FROM value = -50 }
+#                NOT = { relation = { who = FROM value = 0 } }
+#            }
+#            modifier = {
+#                factor = 1.25
+#                relation = { who = FROM value = 0 }
+#                NOT = { relation = { who = FROM value = 50 } }
+#            }
+#        }
+#    }
+#
+#    option = {
+#        name = "EVTOPT500002C"	#stay neutral
+#        set_country_flag = caucasian_war_voted
+#        relation = { who = CPL value = -25 }
+#        any_pop = {
+#            limit = { has_pop_culture = polish }
+#            consciousness = 4
+#            militancy = 1
+#        }
+#        ai_chance = {
+#            factor = 25
+#            modifier = {
+#                factor = 5
+#                any_owned_province = { pop_majority_culture = polish }
+#            }
+#            modifier = {
+#                factor = 2
+#                relation = { who = FROM value = 50 }
+#                NOT = { relation = { who = FROM value = 100 } }
+#            }
+#        }
+#    }
+#    option = {
+#        name = "EVTOPT500002D"	#support russia
+#        set_country_flag = caucasian_war_voted
+#        relation = { who = FROM value = 25 }
+#        relation = { who = CPL value = -150 }
+#        any_pop = {
+#            limit = { has_pop_culture = polish }
+#            militancy = 4
+#            consciousness = 7
+#        }
+#        ai_chance = {
+#            factor = 25
+#            modifier = { factor = 5 alliance_with = FROM }
+#            modifier = {
+#                factor = 2
+#                relation = { who = FROM value = 190 }
+#            }
+#            modifier = {
+#                factor = 2
+#                relation = { who = FROM value = 150 }
+#            }
+#            modifier = {
+#                factor = 2
+#                relation = { who = FROM value = 100 }
+#            }
+#            modifier = {
+#                factor = 3
+#                OR = {
+#                    tag = PRU
+#                    tag = NGF
+#                }
+#            }
+#        }
+#    }
+#}
+#
 #country_event = {
 #    id = 32513
 #    title = "EVTNAME32513" #The Caucasian War

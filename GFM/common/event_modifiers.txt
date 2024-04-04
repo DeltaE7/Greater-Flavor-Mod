@@ -753,7 +753,7 @@ highlander_raids = {
 	supply_limit = -15
 	#attrition = 10
 	max_attrition = 10
-	reinforce_speed = -0.5
+	#reinforce_speed = -0.5
 }
 
 jewish_farms = {
